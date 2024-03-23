@@ -1,27 +1,37 @@
 # AngularPizzaCo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+### Simple website where you can put the pizza you want in the card, order it, and see when it will arrive, all presented in a clean and simple way. This app is a copy of Fast React Pizza Co. made using Angular version 17.2.0
 
-## Development server
+## Features
+* NgRx is used in combination with Angular for state managment
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* A list of pizzas you can put in a cart and there you can decide if you want to order it
 
-## Code scaffolding
+* Geolocation API for getting your current location so the order can be "delivered"
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Easy way to add the count on the pizzas you have put on the cart either on the menu or the cart itself
 
-## Build
+* Easy way to remove the pizzas from the cart
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Responsive design for mobile phones, tablets, laptops and monitors.
 
-## Running unit tests
+## Techology stack
+* For starting the Angular app - Angular CLI
+* For UI state managment - NgRx
+* For routing - @angular/router
+* For styling - Tailwind
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ ###!Note:
+ The app is made with a remote API, so if the API stops working or changes its URL, the app wont work too.
 
-## Running end-to-end tests
+## Project preview
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+![image](https://github.com/MatijaNikolic345/Angular-Pizza/assets/139424786/47681b52-a886-4ad6-93e3-11cb6bef5b7c)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+![image](https://github.com/MatijaNikolic345/Angular-Pizza/assets/139424786/a5851580-7c53-4bef-967f-4d70d7c46086)
+
+<p align="center">
+ <img  src="https://github.com/MatijaNikolic345/Fast-React-Pizza/assets/139424786/55220dd2-9035-4c31-b7b9-c0b14aaa3f90">
+</p>
