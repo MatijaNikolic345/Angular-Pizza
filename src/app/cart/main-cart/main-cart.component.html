@@ -1,0 +1,57 @@
+<div class="flex gap-6 flex-col mt-5">
+  <a
+    class="text-blue-500 hover:text-blue-600 hover:underline text-sm cursor-pointer"
+    (click)="backToMenu()"
+    >&#8592; Back to menu</a
+  >
+  <h2 *ngIf="cart.length === 0" class="text-xl font-semibold">
+    Your cart is empty. Start adding some pizzas :)
+  </h2>
+  <div class="flex gap-6 flex-col" *ngIf="cart.length >= 1">
+    <h2 class="text-xl font-semibold">Your cart, {{ username }}</h2>
+    <div
+      *ngFor="let cartItem of cart"
+      class="flex sm:flex-row flex-col sm:gap-0 gap-2 justify-between sm:items-center border-b border-stone-200 pb-4"
+    >
+      <p>{{ cartItem.quantity }}x {{ cartItem.name }}</p>
+      <div class="flex gap-3 items-center sm:justify-normal justify-between">
+        <p class="font-semibold">{{ formatCurrency(cartItem.totalPrice) }}</p>
+        <div class="flex gap-3 items-center">
+          <button
+            (click)="onDecreaseQuantity(cartItem.pizzaId, cartItem.quantity)"
+            class="inline-block text-sm rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2"
+          >
+            -
+          </button>
+          <p class="font-medium">{{ cartItem.quantity }}</p>
+          <button
+            (click)="onIncreaseQuantity(cartItem.pizzaId)"
+            class="inline-block text-sm rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2"
+          >
+            +
+          </button>
+        </div>
+        <button
+          (click)="onDeletePizza(cartItem.pizzaId)"
+          class="inline-block text-xs rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-3 py-1.5 md:px-5 md:py-2.5"
+        >
+          delete
+        </button>
+      </div>
+    </div>
+    <div class="flex gap-3 items-center">
+      <button
+        (click)="orderPizzas()"
+        class="inline-block text-sm rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-3 py-2 md:px-6 md:py-4"
+      >
+        order pizzas
+      </button>
+      <button
+        (click)="onClearCart()"
+        class="inline-block text-sm rounded-full bg-transparent border-2 border-stone-300 font-semibold uppercase tracking-wide text-stone-400 transition-colors duration-300 hover:text-stone-800 hover:bg-stone-300 focus:bg-stone-300 focus:outline-none focus:ring focus:ring-stone-300 focus:ring-offset-2 disabled:cursor-not-allowed px-3 py-2 md:px-6 md:py-4"
+      >
+        clear cart
+      </button>
+    </div>
+  </div>
+</div>

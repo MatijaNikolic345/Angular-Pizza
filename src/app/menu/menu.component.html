@@ -1,0 +1,66 @@
+<div>
+  @for (pizza of menuList; track $index) {
+  <div class="flex justify-between border-b border-stone-200 py-2 w-full">
+    <div class="flex gap-3 w-full">
+      <img
+        class="object-scale-down w-24"
+        [ngClass]="{ 'grayscale opacity-70': pizza.soldOut }"
+        [src]="pizza.imageUrl"
+        [alt]="pizza.name"
+      />
+      <div class="flex flex-col justify-between gap-1 pl-1 w-full">
+        <div class="flex flex-col gap2 flex-wrap overflow-hidden">
+          <h4 class="font-semibold">{{ pizza.name }}</h4>
+          <p class="text-sm text-stone-500 italic capitalize">
+            {{ pizza.ingredients.join(", ") }}
+          </p>
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p *ngIf="!pizza.soldOut" class="text-sm">
+            {{ formatCurrency(pizza.unitPrice) }}
+          </p>
+          <p
+            class="text-stone-500 font-medium uppercase text-sm"
+            *ngIf="pizza.soldOut"
+          >
+            sold out
+          </p>
+          <button
+            (click)="addPizzaToCart(pizza)"
+            *ngIf="!pizza.soldOut && !isInCartChecker(pizza.id)"
+            type="button"
+            class="inline-block text-xs rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-3 py-1.5 md:px-5 md:py-2.5"
+          >
+            Add to cart
+          </button>
+          <div
+            *ngIf="!pizza.soldOut && isInCartChecker(pizza.id)"
+            class="flex gap-3 items-center"
+          >
+            <button
+              (click)="onDecreaseQuantity(pizza.id, getCartQuantity(pizza.id))"
+              class="inline-block text-sm rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2"
+            >
+              -
+            </button>
+            <p class="font-medium">{{ getCartQuantity(pizza.id) }}</p>
+            <button
+              (click)="onIncreaseQuantity(pizza.id)"
+              class="inline-block text-sm rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2"
+            >
+              +
+            </button>
+            <button
+              (click)="onDeletePizza(pizza.id)"
+              class="inline-block text-xs rounded-full bg-yellow-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-yellow-300 focus:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 disabled:cursor-not-allowed px-3 py-1.5 md:px-5 md:py-2.5"
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-end"></div>
+  </div>
+  }
+</div>

@@ -1,0 +1,11 @@
+<div
+  *ngIf="cart.length >= 1"
+  class="flex justify-between items-center py-4 px-6 w-full bg-stone-800 text-stone-300"
+>
+  <p class="flex gap-5 uppercase font-semibold">
+    {{ pizzaQuantity }} Pizzas<span>{{ formatCurrency(totalPizzaPrice) }}</span>
+  </p>
+  <a (click)="openCart()" class="uppercase text-stone-200 cursor-pointer"
+    >Open Cart &#8594;</a
+  >
+</div>

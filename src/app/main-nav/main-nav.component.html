@@ -1,0 +1,21 @@
+<nav
+  class="px-4 py-3 w-screen flex justify-between bg-yellow-400 sm:px-6 items-center cursor-pointer"
+>
+  <h3
+    (click)="onClickHeading()"
+    class="uppercase text-stone-700 tracking-widest"
+  >
+    Angular Pizza Co.
+  </h3>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <input
+      class="w-28 rounded-full bg-yellow-100 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-500 focus:ring-opacity-50 sm:w-64 sm:focus:w-72"
+      type="text"
+      name="id"
+      ngModel
+      placeholder="Search order #"
+    />
+  </form>
+
+  <p class="font-semibold uppercase text-sm" *ngIf="username">{{ username }}</p>
+</nav>
