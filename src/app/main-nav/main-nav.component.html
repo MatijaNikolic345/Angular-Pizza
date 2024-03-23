@@ -17,5 +17,7 @@
     />
   </form>
 
-  <p class="font-semibold uppercase text-sm" *ngIf="username">{{ username }}</p>
+  <p class="font-semibold uppercase text-sm sm:block hidden" *ngIf="username">
+    {{ username }}
+  </p>
 </nav>
